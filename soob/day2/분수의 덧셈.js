@@ -12,11 +12,11 @@ const getGCD = (num1, num2) => {
 };
 
 function solution(denom1, numer1, denom2, numer2) {
-  let denom = denom1 * numer2 + denom2 * numer1;
-  let numer = numer1 * numer2;
-  let gcd = getGCD(denom, numer);
+  let numer = denom1 * numer2 + denom2 * numer1;
+  let denom = numer1 * numer2;
+  let gcd = getGCD(numer, denom);
 
-  return [denom / gcd, num / gcd];
+  return [numer / gcd, denom / gcd];
 }
 
 // 다른 사람 풀이
