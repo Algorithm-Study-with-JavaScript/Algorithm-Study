@@ -1,0 +1,15 @@
+//내 풀이
+function solution(numbers) {
+    var answer = [];
+    for(num of numbers){
+        answer.push(num*2)
+    }
+    return answer;
+}
+
+//다른 사람 풀이 accumulator a, current value b
+function solution(numbers) {
+    return numbers.reduce((a, b) => [...a, b * 2], []);
+}
+//다른 사람 풀이
+const solution = (numbers) => numbers.map((number) => number * 2)
