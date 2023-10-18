@@ -1,5 +1,4 @@
 function solution(numbers) {
-  var answer = [];
   return numbers.reduce((accum, element) => [...accum, element * 2], []);
 }
 
