@@ -1,0 +1,32 @@
+// 내 풀이
+
+function solution(numer1, denom1, numer2, denom2) {
+    var answer = [];
+    const denom = denom1 * numer2 + denom2 * numer1;
+    const numer = denom1 * denom2;
+  
+    let common = 1;
+   
+    for(let i=1; i<=denom || i<=numer;i++){
+        if(denom%i===0 && numer%i===0){
+         common = i;
+        }
+    }
+    answer.push(denom/common);
+    answer.push(numer/common);
+    return answer;
+}
+
+//다른 사람 풀이법: 유클리드 호제법
+function cal_gcd(a, b) {
+    return a % b === 0 ? b : cal_gcd(b, a % b)
+}
+
+function solution(denum1, num1, denum2, num2) {
+    let denum = denum1 * num2 + denum2 * num1;
+    let num = num1 * num2;
+    let gcd = cal_gcd(denum, num);
+    
+    // 최대 공약수를 분자 분모에 나누고 배열에 넣기
+    return [denum / gcd, num / gcd]
+}
