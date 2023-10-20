@@ -9,7 +9,6 @@ function solution(array) {
 
   //배열을 돌면서 객체에 해당하는 key가 있으면 value에 +1 해주고 없으면 추가
   array.map((e) => {
-    const key = e;
     if (obj[e] === undefined) {
       obj[e] = 1;
     } else {
