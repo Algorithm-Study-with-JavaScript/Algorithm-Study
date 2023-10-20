@@ -1,0 +1,16 @@
+// 내 풀이
+function solution(numbers) {
+    var answer = 0;
+    var sum = 0;
+    for (num of numbers){
+        sum += num;
+    }
+    answer = sum / numbers.length
+    return answer;
+}
+
+//다른 사람 풀이: reduce 함수 이용해서 누적합 더한 후 나눠 평균 구함
+function solution(numbers) {
+    var answer = numbers.reduce((a,b) => a+b, 0) / numbers.length;
+    return answer;
+}
