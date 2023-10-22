@@ -1,0 +1,16 @@
+// 나의 풀이 filter와 length 메소드이용
+function solution(num_list) {
+    var answer = [num_list.filter((num)=>num%2===0).length,num_list.filter((num)=>num%2!==0).length];
+    return answer;
+}
+
+// 다른 사람 풀이: 홀짝 판단해야하는 숫자를 인덱스로 이용 => a가 짝수이면 a%2==0번째 인덱스값+1
+function solution(num_list) {
+    var answer = [0,0];
+
+    for(let a of num_list){
+        answer[a%2] += 1
+    }
+
+    return answer;
+}
