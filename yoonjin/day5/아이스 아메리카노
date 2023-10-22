@@ -1,0 +1,12 @@
+// 나의 풀이
+function solution(money) {
+    const americano = Math.trunc(money/5500);
+    const changes = money - americano*5500;
+    var answer = [americano,changes];
+    return answer;
+}
+
+// 다른 사람 풀이 : 나머지 연산자 활용해서 잔돈 구함
+function solution(money) {
+    return [Math.floor(money / 5500), money % 5500];
+}

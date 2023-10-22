@@ -1,0 +1,14 @@
+// 나의 풀이: reverse 메소드 이용
+function solution(num_list) {
+    return num_list.reverse();
+}
+
+// 남의 풀이 for 반복문 이용
+function solution(num_list) {
+    var answer = [];
+    var j = num_list.length
+    for(var i = 1; i <= j; i++){
+        answer.push(num_list[j-i])
+    }
+    return answer;
+}

@@ -1,0 +1,9 @@
+// 나의 풀이
+function solution(age) {
+    return (2022-age+1);
+}
+
+// 다른 사람 풀이 Date().getFullYear()으로 현지시간 기준 연도 반환
+function solution(age) {
+    return new Date().getFullYear() - age + 1;
+}

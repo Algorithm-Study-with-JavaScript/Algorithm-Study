@@ -1,0 +1,10 @@
+// 나의 풀이: split > 배열 > reverse > join> 문자열
+function solution(my_string) {
+    return my_string.split("").reverse().join("");
+}
+
+// 다른 사람 풀이: spread 문법 사용해서 문자열을 배열에 담음
+function solution(my_string) {
+    var answer = [...my_string].reverse().join("");
+    return answer;
+}
