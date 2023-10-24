@@ -1,0 +1,12 @@
+// 나의 풀이
+function solution(n, k) {
+    var can = Math.floor(n/10);
+    return n*12000 + k*2000 - can*2000;
+}
+
+// 다른 사람 풀이: tilt연산자를 사용해 비트 잘라내서 정수만 취함
+function solution(n, k) {
+    k-=~~(n/10);
+    if (k < 0) k = 0;
+    return n*12000+k*2000;
+}

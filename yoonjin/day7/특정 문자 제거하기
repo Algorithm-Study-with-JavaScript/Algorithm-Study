@@ -1,0 +1,9 @@
+// 다른 사람 풀이(1): letter로 문자열을 나눈 후 조인으로 합침
+function solution(my_string, letter) {
+    return my_string.split(letter).join('')
+}
+
+// 다른 사람 풀이(2): replaceAll메서드 이용
+function solution(my_string, letter) {
+    return my_string.replaceAll(letter, "");
+}
