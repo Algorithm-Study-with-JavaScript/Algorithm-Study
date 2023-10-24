@@ -1,0 +1,24 @@
+// 나의 풀이
+function solution(emergency) {
+    var answer = [];
+    var temp = [];
+    //한 배열에 emergency를 내림차순으로 정렬 저장
+    // emergency = [3,76,24] => temp = [76,24,3]
+    temp = [...emergency].sort((a,b)=>b-a);
+
+    //배열에서 emgergency의 index를 찾아 저장
+    // temp와 emergency의 응급도가 일치한다면 그 때 temp 인덱스를 answer에 푸쉬
+    // 그럼 처음 주어진 emergency배열의 순서대로 각자의 순서가 저장된다.
+    for(let i=0; i< temp.length; i++){
+        answer.push(temp.indexOf(emergency[i])+1);
+    }
+    return answer;
+    
+}
+
+// 다른 사람 풀이
+// map 메서드 사용
+function solution(emergency) {
+    let sorted = emergency.slice().sort((a,b)=>b-a);
+    return emergency.map(v=>sorted.indexOf(v)+1);
+}
