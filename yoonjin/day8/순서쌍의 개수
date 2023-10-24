@@ -1,0 +1,9 @@
+// 2중 for문으로 해결하려했으나 시간 초과
+// 다른 사람 풀이: 제곱근 이하의 수 중 나눠떨어지는 수가 있으면 순서쌍을 구하는 것이므로 +2 , 제곱근이 정수일 경우 하나 더 더함
+function solution(n) {
+    let ans = 0;
+    for (let i = 1; i < Math.sqrt(n); i++)
+        if (n%i === 0) ans+=2;
+
+    return Number.isInteger(Math.sqrt(n)) ? ans+1 : ans;
+}
