@@ -1,0 +1,22 @@
+// 나의 풀이
+function solution(angle) {
+    var answer = 0;
+    answer = angle/90;
+    if(answer < 1){
+        return 1;
+    }else if(answer === 1){
+        return 2;
+    } else if(answer< 2){
+        return 3;
+    } else if(answer==2){
+        return 4;
+    }   
+    return answer;
+}
+
+// 다른 사람 풀이: 예각, 직각, 둔각, 평각의 기준이 될 숫자들을 배열에 저장한 후 filter 메서드로 angle값보다 큰 값의 개수만을 세서 리턴
+// 예각 70도라면 return[0].length => 1
+
+function solution(angle) {
+    return [0, 90, 91, 180].filter(x => angle>=x).length;
+}
