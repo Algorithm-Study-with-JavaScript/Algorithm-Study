@@ -1,0 +1,45 @@
+```
+나의 풀이:
+1. ageList라는 배열에 숫자 - 문자 대응하게 저장
+2. do-while 문을 사용해 age>0인 동안 age%10에 해당하는 문자를 찾아 answer에 저장한 후 age에 age/10 저장
+=> 이러면 뒤에서부터 저장이 돼서 구하는 나이가 반대로 구해짐
+3. 그리고 나이를 reverse하기 위해 스프레드 구문과 join, reverse 사용
+```
+function solution(age) {
+    var answer="";
+    const ageList = 
+          [[0,"a"],
+           [1,"b"],
+           [2,"c"],
+           [3,"d"],
+           [4,"e"],
+           [5,"f"],
+           [6,"g"],
+           [7,"h"],
+           [8,"i"],
+           [9,"j"],
+          ];
+    do{
+        answer += ageList[age%10][1];
+        age = Math.floor(age/ 10);
+    } while(age>0){
+        return [...answer].reverse().join("");
+    }
+
+}
+
+```
+다른 사람 풀이
+1. 나이를 toString을 사용해 문자열화한다.
+2. split을 사용해 문자열을 문자 하나씩 쪼갠다.
+3. 쪼갠 문자를 인덱스로 사용하여 "abcdefghij"중 해당하는 문자를
+4. join을 통해 합쳐 리턴한다.
+
+```
+function solution(age) {
+  return age
+    .toString()
+    .split("")
+    .map((v) => "abcdefghij"[v])
+    .join("");
+}
