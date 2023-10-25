@@ -11,7 +11,7 @@ function solution(angle) {
 }
 
 
-//filter는 조건에 일치하는 값만 리턴 
+// filter는 조건에 일치하는 값만 리턴 경계가 되는 값이 0, 90, 91, 180
 function solution(angle) {
   return [0, 90, 91, 180].filter((x) => angle >= x).length;
 }
