@@ -47,3 +47,7 @@ function solution(letter) {
 function solution(letter) {
   return letter.split(" ").reduce((prev, curr) => prev + morse[curr], "");
 }
+// 문자열 letter을 split 메소드를 통해서 배열로 변환
+// reduce 메소드 사용 -> prev는 직전 콜백함수가 리턴한 값, 초기값은 빈 문자열, curr은 배열을 순회하며 해당하는 값
+// morse 객체의 curr에 해당하는 value를 찾아서 prev에 추가해줌 -> prev는 문자열로 모스부호를 해석한 결과값을 담음
+// 최종적으로 morse 객체에서 curr에 해당하는 value가 모인 문자열이 리턴

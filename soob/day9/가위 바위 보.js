@@ -20,3 +20,6 @@ function solution(rsp) {
   var answer = [...rsp].map((v) => arr[v]).join("");
   return answer;
 }
+// arr에 가위, 바위, 보에 해당하는 수와 이를 이기는 경우에 해당하는 수를 매칭해서 선언
+// 매개변수 rsp를 돌면서 arr객체에 해당값을 key값으로 가지는 value의 배열이 리턴됨
+// 문자열로 리턴해야 하므로 join 메소드 사용해서 배열을 문자열로 변환 후 리턴
