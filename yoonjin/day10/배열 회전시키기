@@ -1,0 +1,28 @@
+// 나의 풀이: splice 이용
+function solution(numbers, direction) {
+    let answer;
+    if (direction === "right"){
+        answer = numbers.slice(0,numbers.length-1);
+        answer.splice(0,0,numbers[numbers.length-1]);
+    }else{
+        answer = numbers.slice(1,numbers.length);
+        answer.splice(numbers.length,0,numbers[0]);
+    }
+    return answer;
+
+}
+
+// 다른 사람 풀이: unshift push pop이용
+function solution(numbers, direction) {
+    var answer = [];
+
+    if ("right" == direction) {
+        numbers.unshift(numbers.pop()); //unshift로 뒤에서 pop한 요소 바로 추가
+    } else {
+        numbers.push(numbers.shift()); //push로 앞에서 제거한 첫번째요소를 뒤에 추가
+    }
+
+    answer = numbers;
+
+    return answer;
+}
