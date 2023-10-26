@@ -1,0 +1,8 @@
+// 나의 풀이
+function solution(numbers, k) {
+    return numbers[(2*(k-1))% numbers.length];
+} 
+// 감소연산자 사용 --k*2
+function solution(numbers, k) {
+    return numbers[(--k*2)%numbers.length];
+}
