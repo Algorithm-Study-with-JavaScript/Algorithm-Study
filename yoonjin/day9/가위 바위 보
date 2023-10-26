@@ -1,0 +1,14 @@
+// 나의 풀이: reduce 사용
+function solution(rsp) {
+    const victory = {
+        "2" : "0",
+        "0" : "5",
+        "5" : "2"
+    }
+    return rsp.split("").reduce((prev,curr) => prev + victory[curr],"");
+}
+
+// 다른 사람 풀이: 삼항 연산자 연결
+function solution(rsp) {
+    return rsp.split("").map((v) => v==="2" ? 0 : (v==="0" ? 5 : 2)).join("")
+}
