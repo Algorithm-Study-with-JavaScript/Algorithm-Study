@@ -12,3 +12,6 @@ function solution(dot) {
   const check = num * num2 > 0;
   return num > 0 ? (check ? 1 : 4) : check ? 3 : 2;
 }
+// dot을 구조분해 할당으로 num, num2로 분리
+// 두 수를 곱했을 때 양수인지 여부를 check에 할당
+// 이후 위 로직과 동일하게 검사 후 값을 리턴함
