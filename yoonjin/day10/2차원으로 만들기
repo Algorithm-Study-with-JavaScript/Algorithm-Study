@@ -1,0 +1,21 @@
+// 나의 풀이: 슬라이스 반복
+function solution(num_list, n) {
+    var answer = [];
+    for(let i=0; i<num_list.length; i+=n){
+        answer.push(num_list.slice(i,i+n));
+    }
+  
+    return answer;
+}
+
+// 다른 사람 풀이: while 사용 + splice로 원본 배열 바꾸며 num_list길이가 참인 동안 반복
+
+function solution(num_list, n) {
+    var answer = [];
+
+    while(num_list.length) {
+        answer.push(num_list.splice(0,n));
+    }
+
+    return answer;
+}
