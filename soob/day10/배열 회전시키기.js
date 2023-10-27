@@ -29,3 +29,6 @@ function solution(numbers, direction) {
 
   return answer;
 }
+// 방향이 오른쪽인 경우 pop 메소드를 이용해서 마지막 요소를 제거 후  제거된 값이 반환되고 이를 unshift 메소드를 통해서 앞에 추가
+// 오른쪽이 아닌 경우 shift 메소드를 이용해서 첫번째 요소를 제거 후 제거된 값이 반환되고 이를 push 메소드를 통해서 배열의 마지막에 추가
+// answer에 numbers를 재할당 후 answer 리턴
