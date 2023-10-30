@@ -1,0 +1,31 @@
+// 나의 풀이
+function solution(n) {
+    var answer = 0;
+    for(let i=1; i<=n; i++){
+        var division = 0;
+        for(let j=1; j<=i; j++){
+            if(i%j == 0) {
+                division +=1;
+            }
+            if(division>=3){
+                answer+=1;
+                break;
+            }
+        }
+    }
+    return answer;
+}
+
+// 다른 사람 풀이: 합성수 i*j 가 n이하인 수를 체크하기 위해 0이라 저장 한후 filter length구해서 개수구함
+function solution(n) {
+    let dp = new Array(n+1).fill(1)
+    for(let i = 2 ; i <= n ; i++){
+        if(dp[i]){
+            for(let j = 2 ; i*j <= n ; j++){
+                dp[i*j] = 0
+            }
+        }
+    }
+
+    return dp.filter(el => el === 0).length
+}
