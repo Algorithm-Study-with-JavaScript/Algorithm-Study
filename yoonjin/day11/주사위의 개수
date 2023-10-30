@@ -1,0 +1,11 @@
+//나의 풀이
+const solution = (box, n) => Math.floor(box[0]/n) * Math.floor(box[1]/n) * Math.floor(box[2]/n);
+
+//다른 사람 풀이 destruction 사용
+
+function solution(box, n) {
+    let [width, length, height] = box;
+
+    return Math.floor(width / n) * Math.floor(length / n) * Math.floor(height / n);
+
+}

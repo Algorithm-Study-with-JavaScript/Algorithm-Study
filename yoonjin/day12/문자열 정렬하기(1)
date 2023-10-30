@@ -1,0 +1,5 @@
+// 다른 사람 풀이
+// 정규 표현식 사용: match를 사용해 숫자인 모든 요소를 배열 반환 => sort로 정렬 => map으로 숫자화
+function solution(my_string) {
+    return my_string.match(/\d/g).sort((a, b) => a - b).map(n => Number(n));
+}

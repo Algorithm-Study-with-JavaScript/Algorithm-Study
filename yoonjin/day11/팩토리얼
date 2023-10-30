@@ -1,0 +1,15 @@
+// 나의 풀이
+
+function solution(n) {
+    let factorial = (x) => x==0? 1: (x==1? 1: x*factorial(x-1));
+    for(let i=1; i<=n; i++){
+        if (factorial(i) == n) return i;
+        else if(factorial(i) > n) return i-1;
+    }
+}
+
+// 다른 사람 풀이
+function solution(n) {
+    for(let i = 1, v = 1; true; v *= ++i) if(v > n) return --i;
+}
+      

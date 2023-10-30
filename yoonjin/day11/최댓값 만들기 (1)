@@ -1,0 +1,5 @@
+// 다른 사람 풀이 내림차순 정렬하여 가장 앞의 두 개 곱함
+function solution(numbers) {
+    numbers.sort((a,b)=>b-a);
+    return numbers[0]*numbers[1];
+}

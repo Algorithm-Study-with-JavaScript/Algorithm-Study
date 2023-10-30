@@ -1,0 +1,7 @@
+// 나의 풀이: replaceAll 반복사용
+const solution = (my_string) => my_string.replaceAll("a","").replaceAll("e","").replaceAll("i","").replaceAll("o","").replaceAll("u","")
+
+// 다른 사람 풀이 : 정규 표현식 사용
+  function solution(my_string) {
+    return my_string.replace(/[aeiou]/g, '');
+}

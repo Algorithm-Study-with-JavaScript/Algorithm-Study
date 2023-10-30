@@ -1,0 +1,12 @@
+//나의 풀이: match와 reduce사용
+function solution(my_string) {
+    return my_string.match(/\d/g).map(n => Number(n)).reduce((curr,acc)=>curr+acc,0);
+}
+
+//다른 사람 풀이
+function solution(my_string) {
+    const answer = my_string.replace(/[^0-9]/g, '')
+                            .split('')
+                            .reduce((acc, curr) => acc + Number(curr), 0);
+    return answer;
+}
