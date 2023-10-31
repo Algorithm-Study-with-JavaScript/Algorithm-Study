@@ -1,0 +1,11 @@
+// 나의 풀이: 오름차순 정렬 사용
+function solution(side) {
+    const sides = side.sort((a,b)=>a-b);
+    return sides[2] >= sides[0]+sides[1] ? 2 : 1;
+}
+
+// 다른 사람 풀이: destruction과 내림차순 정렬로 가장 긴 삼각형 변과 나머지들을 구함
+function solution(sides) {
+    const [long, a, b] = sides.sort((a,b) => b-a);
+    return long < a + b ? 1 : 2
+}
