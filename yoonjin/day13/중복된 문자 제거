@@ -1,0 +1,18 @@
+// 나의 풀이: Set에 중복 문자 저장하고 set에 없다면 set과 answer 문자열에 추가
+function solution(my_string) {
+    var answer = "";
+    let strSet = new Set();
+  
+    for(str of [...my_string]){
+        if (!strSet.has(str)){
+            answer += str;
+            strSet.add(str);
+        }
+    }
+    return answer;
+}
+
+// 다른 사람 풀이: string에도 바로 set을 적용할 수 있었음... 그렇게 중복되지 않는 문자들을 set에 담아 스프레드 join으로 문자열화함
+function solution(my_string) {
+    return [...new Set(my_string)].join('');
+}

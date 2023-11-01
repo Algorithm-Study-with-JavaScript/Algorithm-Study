@@ -1,0 +1,12 @@
+// 나의 풀이: map의 index를 사용
+const solution = (cipher, code) =>
+  [...cipher].map((item,index)=> (index+1)%code === 0 ? item:"").join("");
+
+// 다른 사람 풀이: for 순회
+function solution(cipher, code) {
+  var answer = "";
+  for (let i = code - 1; i < cipher.length; i += code) {
+    answer += cipher[i];
+  }
+  return answer;
+}

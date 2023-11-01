@@ -1,0 +1,17 @@
+// 나의 풀이: uppercase한 값과 str이 같다면 lowercase해줌
+function solution(my_string) {
+    var answer = "";
+    for (str of my_string){
+        if(str.toUpperCase() === str){
+            answer += str.toLowerCase();
+        }else{
+            answer += str.toUpperCase();
+        }
+    } 
+    return answer;
+}
+
+// 다른 사람 풀이: split map 삼항연산자
+function solution(my_string) {
+    return my_string.split('').map(n => n === n.toUpperCase() ? n.toLowerCase() : n.toUpperCase()).join('')
+}
