@@ -1,0 +1,27 @@
+// 나의 풀이: 공백제거한 배열을 순회하며 합하는데, 배열 요소가 Z인 경우엔 이전에 더했던 값을 빼준다.
+function solution(s){
+    const base = s.split(" ").map(x => x);
+    let sum = 0;
+    for(let i=0; i<base.length; i++){
+        if(base[i] === "Z"){
+            sum -= parseInt(base[i-1]);
+        }else{
+            sum += parseInt(base[i]);
+        }
+        
+    }
+    return sum;
+}
+
+// 다른 사람 풀이: 공백제거 후 forEach문으로 순회하며 Z인 경우 pop하고 아닌 경우 모두 stack에 푸시한다. 그리고 target이 Z인 경우 이전에 더했던 숫자를 pop한다.
+//(ctrl Z는 아예 덧셈을 무효화하는 것이므로)
+function solution(s) {
+    const stack = []
+
+    s.split(' ').forEach((target) => {
+        if(target === 'Z') stack.pop();
+        else stack.push(+target)
+    })
+
+    return stack.length ? stack.reduce((pre, cur) => pre + cur) : 0;
+}

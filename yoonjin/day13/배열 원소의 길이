@@ -1,0 +1,9 @@
+// 나의 풀이: map 사용
+const solution = (strlist) => strlist.map(x => x.length)
+
+// 다른 사람 풀이: forEach 사용
+function solution(strlist) {
+    var answer = [];
+    strlist.forEach(el=>answer.push(el.length))
+    return answer;
+}
