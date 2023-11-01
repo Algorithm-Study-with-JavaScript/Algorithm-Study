@@ -3,3 +3,4 @@ function solution(my_string) {
 
   return [...set].join("");
 }
+var solution = (s) => [...s].filter((c, i) => s.indexOf(c) == i).join("");
