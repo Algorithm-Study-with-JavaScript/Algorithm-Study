@@ -1,0 +1,36 @@
+// 나의 풀이: 첫번째 요소로 초기화한 뒤 +/- 연산자인지 여부에 따라 계산
+function solution(my_string) {
+    var answer = 0;
+    const exp = my_string.split(" ")
+    let total = parseInt(exp[0]);
+    for (let i = 0; i< exp.length; i++){
+        if(exp[i]==="+"){
+            total += parseInt(exp[i+1]); 
+        }
+        else if(exp[i]==="-"){
+            total -= parseInt(exp[i+1]); 
+        }
+    }   
+    return total;
+}
+
+// 다른 사람 풀이: eval 사용 < 경고
+var solution=eval
+
+// 다른 사람 풀이(2): +/-에 따라 곱해서 push한 뒤 reduce
+function solution(my_string) {
+    const stack = [];
+
+    let sign = 1;
+    for (const ch of my_string.split(" ")) {
+        if (ch === "+") {
+            sign = 1;
+        } else if (ch === "-") {
+            sign = -1;
+        } else {
+            stack.push(ch * sign);
+        }
+    }
+
+    return stack.reduce((a,b) => a + b, 0);
+}
