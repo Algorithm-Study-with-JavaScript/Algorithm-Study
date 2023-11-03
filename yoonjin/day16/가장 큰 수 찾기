@@ -1,0 +1,8 @@
+// 나의 풀이 Math.max로 최댓값 구한후 indexOf로 index 구함
+const solution = (array) => [Math.max(...array),array.indexOf(Math.max(...array))];
+
+// 다른 사람 풀이: findIndex => 객체에서 대상찾기 좋음
+// https://developing-move.tistory.com/11
+function solution(array) {
+    return [Math.max(...array), array.findIndex(el => el === Math.max(...array))];
+}
