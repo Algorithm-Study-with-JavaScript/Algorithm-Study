@@ -1,0 +1,15 @@
+function solution(quiz) {
+    var answer = [];
+    for (exp of quiz){
+        var [left,right] = exp.split("=");
+        let left_res = eval(left);
+        let right_res = eval(right);
+        
+        if (left_res == right_res){
+            answer.push("O");
+        } else {
+            answer.push("X");
+        }
+    }
+    return answer;
+}
