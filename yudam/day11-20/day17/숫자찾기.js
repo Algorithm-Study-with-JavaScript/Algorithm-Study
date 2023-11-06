@@ -12,3 +12,5 @@ function solution(num, k) {
       .indexOf(k) + 1 || -1
   );
 }
+
+
