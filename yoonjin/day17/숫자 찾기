@@ -1,0 +1,4 @@
+function solution(num, k) {
+    const list = [...String(num)];
+    return list.includes(String(k)) ? list.map(x=>parseInt(x)).indexOf(k)+1 : -1;
+}

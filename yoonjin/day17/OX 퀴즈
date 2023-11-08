@@ -1,0 +1,32 @@
+// 나의 풀이
+function solution(quiz) {
+    var answer = [];
+    for (exp of quiz){
+        var [left,right] = exp.split("=");
+        let left_res = eval(left);
+        let right_res = eval(right);
+        
+        if (left_res == right_res){
+            answer.push("O");
+        } else {
+            answer.push("X");
+        }
+    }
+    return answer;
+}
+
+// 다른 사람 풀이: 구조 분해 할당 이용
+function solution(quiz) {
+    let answer = [];
+    quiz.forEach((val) => {
+        const [x, sign, y, , z] = val.split(" ");
+        let sum = 0;
+        if (sign === "+") {
+            sum = Number(x) + Number(y);
+        } else {
+            sum = Number(x) - Number(y);
+        }
+        sum === Number(z) ? answer.push("O") : answer.push("X");
+    });
+    return answer;
+}
