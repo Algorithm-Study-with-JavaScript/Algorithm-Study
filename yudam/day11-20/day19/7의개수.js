@@ -6,3 +6,6 @@ const solution = (array) => {
 
   return arrayCount.reduce((a, e) => a + e, 0);
 };
+function solution(array) {
+  return array.join("").split("7").length - 1;
+}
