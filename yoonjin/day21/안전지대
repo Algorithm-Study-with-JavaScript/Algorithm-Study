@@ -1,0 +1,17 @@
+// 다른 사람 풀이
+function solution(board) {
+// 좌측 부터 시작해 반시계 방향으로 확인
+    let outside = [[-1,0], [-1,-1], [-1,1], [0,-1],[0,1],[1,0], [1,-1], [1,1]];
+    let safezone = 0;
+    // forEach로 탐색 - 각 배열 요소에 대해 제공된 함수를 한 번씩 실행 element, index, array 순인데 문제가 2차원 배열을 주어줬으므로
+    // 배열 한 줄, 행번호 (y), board가 들어간다
+    board.forEach((row, y, self) => row.forEach((it, x) => {
+      // row에 대해 다시 element, index 탐색하여 element == 1> 지뢰이므로 false 리턴
+        if (it === 1) return false;
+      //some() 메서드는 배열 안의 어떤 요소라도 주어진 판별 함수를 적어도 하나라도 통과하는지 테스트 따라서 반시계 방향으로 전수 조사했을 때 하나라도 1이면 false 리턴 아니면 safezone 리턴
+        return outside.some(([oy, ox]) => !!self[oy + y]?.[ox + x])
+               ? false : safezone++;
+    }));
+
+    return safezone;
+}
