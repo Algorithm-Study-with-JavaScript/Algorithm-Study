@@ -56,5 +56,7 @@ function solution(polynomial) {
   if (xNum) answer.push(`${xNum === 1 ? "" : xNum}x`);
   if (num) answer.push(num);
 
+  // 둘 중에 하나라도 없으면 그냥 join 자체가 안되는 건가?
+  
   return answer.join(" + ");
 }

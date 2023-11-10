@@ -11,3 +11,14 @@ function solution(dots) {
   }
   return Math.abs(dots[0][0] - dots[x][0]) * Math.abs(dots[0][1] - dots[y][1]);
 }
+function solution(dots) {
+  let x = [],
+    y = [];
+
+  for (let pos of dots) {
+    x.push(pos[0]);
+    y.push(pos[1]);
+  }
+
+  return (Math.max(...x) - Math.min(...x)) * (Math.max(...y) - Math.min(...y));
+}
