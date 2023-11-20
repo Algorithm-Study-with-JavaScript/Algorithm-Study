@@ -1,6 +1,8 @@
 function solution(lines) {
   lines.sort((a, b) => a[0] - b[0]);
+
   console.log(lines);
+
   const newArray = [];
   lines.forEach((e, i) => {
     const [num1, num2] = e;
@@ -17,6 +19,8 @@ function solution(lines) {
   if (newArray.length === 0) {
     return 0;
   }
+ 
+
   const xy = [newArray.map((e) => e[0]), newArray.map((e) => e[1])];
 
   return Math.max(...xy[1]) - Math.min(...xy[0]);
