@@ -37,6 +37,9 @@ function solution(a, b) {
   return length ? 2 : 1;
 }
 
+
+
+/////
 function solution(a, b) {
   let n = 1;
   for (let i = 1; i <= Math.min(a, b); i++) {
