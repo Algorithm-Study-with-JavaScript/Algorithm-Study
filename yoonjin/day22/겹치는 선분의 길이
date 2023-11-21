@@ -1,0 +1,34 @@
+// 다른 사람 풀이 (1) : 배열을 0으로 채운뒤 선분이 지나가는 곳마다 +1하고 최종적으로 1보다 큰 곳, 즉 2개 이상의 선분이 지나는 곳은 지나간 선분길이에 +1
+function solution(lines) {
+  var answer = 0;
+  let lineMap = new Array(200);  // 선분들이 놓일 공간 -100 ~ 100
+  lineMap.fill(0);
+
+  for (let i = 0; i < 3; i++) {
+    let left = lines[i][0];
+    let right = lines[i][1];
+
+    for (let j = left; j < right; j++) {
+      lineMap[j + 100] += 1;//기준점 0 주기 위해 +100
+    }
+  }
+
+  for (let i in lineMap) {
+    if (lineMap[i] > 1) {
+      answer += 1;
+    }
+  }
+     return answer;
+}
+
+// 다른 사람 풀이 (2): forEach로 모든 line탐색
+
+function solution(lines) {
+    let line = new Array(200).fill(0);
+
+    lines.forEach(([a, b]) => {
+        for(; a < b; a++) line[a+100]++;
+    });
+
+    return line.reduce((a, c) =>  c > 1 ? a + 1 : a, 0)
+}
