@@ -1,4 +1,9 @@
 function solution(i, j, k) {
-  var answer = 0;
-  return answer;
+  let str = "";
+  for (let z = i; z <= j; z++) {
+    str += z.toString();
+  }
+  const reg = new RegExp(`${k}`, "g");
+
+  return str.match(reg) ? str.match(reg).length : 0
 }

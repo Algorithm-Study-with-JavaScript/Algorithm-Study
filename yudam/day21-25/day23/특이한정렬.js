@@ -18,6 +18,7 @@ function solution(numlist, n) {
     return a;
   }, []);
 }
+
 ///
 
 function solution(numlist, n) {
