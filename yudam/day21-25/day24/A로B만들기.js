@@ -8,5 +8,11 @@ function solution(before, after) {
     beforeArray.splice(index, 1);
   });
 
-  return beforeArray.length === 0 ? 1 : 0   
+  return beforeArray.length === 0 ? 1 : 0;
+}
+
+function solution(before, after) {
+  return before.split("").sort().join("") === after.split("").sort().join("")
+    ? 1
+    : 0;
 }
