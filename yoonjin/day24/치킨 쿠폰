@@ -1,0 +1,10 @@
+// 다른 사람 풀이
+function solution(chicken) {
+    let answer = 0;
+    while(chicken > 9) {
+        answer += Math.floor(chicken/10);
+        chicken =  Math.floor((chicken / 10) + ( chicken % 10));
+    }
+    
+    return answer;
+}
