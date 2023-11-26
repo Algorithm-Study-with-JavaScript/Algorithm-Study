@@ -17,5 +17,5 @@ function solution(i, j, k) {
   return a.split(k).length - 1;
 }
 
-let a = "111"
-a.split("1")
+// let a = "111"
+// a.split("1")
