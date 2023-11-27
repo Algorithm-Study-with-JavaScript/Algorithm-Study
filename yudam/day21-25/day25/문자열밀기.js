@@ -20,3 +20,5 @@ function solution(A, B) {
   }
   return -1;
 }
+
+let solution = (a, b) => (b + b).indexOf(a);
