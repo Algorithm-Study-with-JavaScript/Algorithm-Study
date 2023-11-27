@@ -20,3 +20,7 @@ function solution(chicken) {
   var answer = parseInt((chicken - 1) / 9);
   return answer;
 }
+// 10 - 1 y = Math.floor((x-1)/9) O(1);
+// 19 - 2
+// 28 - 3
+// ans = Math.floor ( )
