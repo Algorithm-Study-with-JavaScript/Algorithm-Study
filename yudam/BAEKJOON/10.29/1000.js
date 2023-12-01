@@ -1,8 +1,8 @@
-// const fs = require("fs");
+let input = require("fs")
+  .readFileSync(__dirname + "/example.txt")
+  .toString()
+  .trim()
+  .split(" ");
 
-// const input = fs.readFileSync("example.txt").toString().split(' ');
-
-// const A = parseInt(input[0]);
-// const B = parseInt(input[1]);
-
-console.log(1 + 2);
+console.log(input[0]);
+console.log(Number(input[0]) + Number(input[1]));
