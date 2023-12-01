@@ -43,23 +43,26 @@ class Stack {
 }
 
 const stack = new Stack();
+let result = "";
 input.forEach((e) => {
   if (e.includes("push")) {
     stack.push(+e.split("push ")[1]);
   }
   if (e.includes("top")) {
-    console.log(stack.peek());
+    result += `${stack.peek()}\n`;
   }
 
   if (e.includes("size")) {
-    console.log(stack.getSize());
+    result += `${stack.getSize()}\n`;
   }
 
   if (e.includes("pop")) {
-    console.log(stack.pop());
+    result += `${stack.pop()}\n`;
   }
 
   if (e.includes("empty")) {
-    console.log(stack.isEmpty());
+    result += `${stack.isEmpty()}\n`;
   }
 });
+
+console.log(result);
