@@ -8,33 +8,26 @@ const [n, ...inputs] = require("fs")
 class Stack {
   constructor() {
     this.stack = [];
-    this.topValue = -1;
   }
 
   push(x) {
-    this.topValue++;
-    this.stack[this.topValue] = x;
+    this.stack.push(x);
   }
 
   pop() {
-    if (this.topValue === -1) {
-      return -1;
-    }
-    const topValue = this.stack[this.topValue];
-    this.topValue--;
-    return topValue;
+    return !this.stack.length ? -1 : this.stack.pop();
   }
 
   size() {
-    return this.topValue + 1;
+    return this.stack.length;
   }
 
   empty() {
-    return this.topValue === -1 ? 1 : 0;
+    return !this.stack.length ? 1 : 0;
   }
 
   top() {
-    return this.topValue === -1 ? -1 : this.stack[this.topValue];
+    return !this.stack.length ? -1 : this.stack[this.stack.length - 1];
   }
 }
 
