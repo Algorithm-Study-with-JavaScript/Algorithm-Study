@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = "";
+        const newArray = arr.filter((e) => e % 2 !== 0);
+        answer += newArray.reduce((a, e) => a + e, 0);
+        answer += "\n" + Math.min(...newArray);
+
+        return answer;
+      }
+
+      arr = [12, 77, 38, 41, 53, 92, 85];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

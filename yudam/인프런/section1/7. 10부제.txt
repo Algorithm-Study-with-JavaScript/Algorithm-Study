@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(day, arr) {
+        const newArray = arr.map((e) => Math.floor(e % 10));
+        console.log(newArray);
+        return newArray.filter((e) => e === day).length;
+      }
+
+      arr = [12, 20, 54, 30, 87, 91, 30];
+      console.log(solution(0, arr));
+    </script>
+  </body>
+</html>

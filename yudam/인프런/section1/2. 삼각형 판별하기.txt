@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b, c) {
+        const newArray = [a, b, c];
+        const max = Math.max(a, b, c);
+        newArray.splice(newArray.indexOf(max), 1);
+        if (newArray[0] + newArray[1] > max) {
+          console.log("Yes");
+        } else {
+          console.log("No");
+        }
+      }
+
+      console.log(solution(6, 7, 11));
+    </script>
+  </body>
+</html>
