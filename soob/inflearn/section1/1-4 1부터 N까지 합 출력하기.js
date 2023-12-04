@@ -14,3 +14,15 @@ function solution(n) {
 }
 
 console.log(solution(10));
+
+// 강의
+function solution(n) {
+  let answer = 0;
+  for (let i = 1; i <= n; i++) {
+    answer = answer + 1;
+  }
+
+  return answer;
+}
+
+console.log(solution(10));
