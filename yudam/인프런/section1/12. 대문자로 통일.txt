@@ -9,6 +9,8 @@
                 let answer="";
                 for(let x of s){
                     let num=x.charCodeAt();
+                    // 소문자일 때, 32를 빼면 대문자가 됨 
+                    //num -32는 숫자니 이를 string을 바꿈
                     if(num>=97 && num<=122) answer+=String.fromCharCode(num-32);
                     else answer+=x;
 
