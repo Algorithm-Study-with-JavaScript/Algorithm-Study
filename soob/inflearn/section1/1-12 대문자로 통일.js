@@ -8,3 +8,27 @@ function solution(s) {
 
 let str = "ItisTimeToStudy";
 console.log(solution(str));
+
+// 강의
+function solution1(s) {
+  let answer = "";
+  for (let x of s) {
+    if (x === x.toLowerCase()) answer += x.toUpperCase();
+    else answer += x;
+  }
+  return answer;
+}
+
+function solution2(s) {
+  let answer = "";
+  for (let x of s) {
+    let num = x.charCodeAt();
+    // 대문자와 소문자 아스키 코드 차이 32
+    if (num >= 97 && num <= 122) answer += String.fromCharCode(num - 32);
+    else answer += x;
+  }
+  return answer;
+}
+
+console.log(solution1(str));
+console.log(solution2(str));

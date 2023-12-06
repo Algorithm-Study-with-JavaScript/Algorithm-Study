@@ -8,5 +8,18 @@
 function solution(s) {
   return [...new Set(s)];
 }
+
 let str = ["good", "time", "good", "time", "student"];
 console.log(solution(str));
+
+// 강의
+function solution1(s) {
+  let answer;
+  answer = s.filter(function (v, i) {
+    return s.indexOf(v) === i;
+  });
+
+  return answer;
+}
+
+console.log(solution1(str));
