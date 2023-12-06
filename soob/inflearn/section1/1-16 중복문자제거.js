@@ -5,3 +5,15 @@ function solution(s) {
   return [...new Set([...s])].join("");
 }
 console.log(solution("ksekkset"));
+
+// 강의
+function solution1(s) {
+  let answer = "";
+  for (let i = 0; i < s.length; i++) {
+    if (s.indexOf(s[i]) === i) answer += s[i];
+  }
+
+  return answer;
+}
+
+console.log(solution1("ksekkset"));

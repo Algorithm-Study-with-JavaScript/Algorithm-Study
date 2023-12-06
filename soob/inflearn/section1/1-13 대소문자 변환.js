@@ -10,3 +10,17 @@ function solution(s) {
 }
 
 console.log(solution("StuDY"));
+
+// 강의
+function solution1(s) {
+  let answer = "";
+
+  for (let x of s) {
+    if (x === x.toUpperCase()) answer += x.toLowerCase();
+    else answer += x.toUpperCase();
+  }
+
+  return answer;
+}
+
+console.log(solution1("StuDY"));

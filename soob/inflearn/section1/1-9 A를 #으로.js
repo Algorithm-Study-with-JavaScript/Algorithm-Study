@@ -6,3 +6,25 @@ function solution(s) {
 
 let str = "BANANA";
 console.log(solution(str));
+
+// 강의
+function solution1(s) {
+  let answer = "";
+  for (let x of s) {
+    if (x === "A") answer += "#";
+    else answer += x;
+  }
+
+  return answer;
+}
+
+function solution2(s) {
+  let answer = s;
+  answer = answer.replace(/A/g, "#");
+
+  return answer;
+}
+
+console.log(solution(str));
+console.log(solution1(str));
+console.log(solution2(str));

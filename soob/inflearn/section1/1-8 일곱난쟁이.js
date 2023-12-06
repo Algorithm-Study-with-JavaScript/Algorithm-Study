@@ -15,20 +15,38 @@ function solution(arr) {
     return (acc = acc + el);
   }, 0);
 
-  let index = [];
-
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length - 1; i++) {
     for (let j = 1; j < arr.length; j++) {
       const x = sum - (arr[i] + arr[j]);
       if (x === 100) {
-        index.push(i);
-        index.push(j);
+        return arr.filter((e) => e !== arr[i] && e !== arr[j]);
       }
     }
   }
-
-  return arr.filter((e) => e !== arr[index[0]] && e !== arr[index[1]]);
 }
 
-let arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+let arr = [22, 7, 21, 19, 10, 15, 25, 8, 13];
 console.log(solution(arr));
+
+// 강의
+function solution1(arr) {
+  let answer = arr;
+  let sum = arr.reduce((a, b) => a + b, 0);
+  let flag = 0;
+
+  for (let i = 0; i < 8; i++) {
+    for (let j = i + 1; j < 9; j++) {
+      if (sum - (arr[i] + arr[j]) === 100) {
+        arr.splice(j, 1);
+        arr.splice(i, 1);
+        flag = 1;
+        break;
+      }
+    }
+    if (flag === 1) break;
+  }
+
+  return answer;
+}
+
+console.log(solution1(arr));

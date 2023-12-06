@@ -9,3 +9,18 @@ function solution(s) {
 }
 console.log(solution("study"));
 console.log(solution("good"));
+
+// 강의
+function solution1(s) {
+  let answer;
+  let mid = Math.floor(s.length / 2);
+
+  if (s.length % 2 === 1) answer = s.substring(mid, mid + 1);
+  //s.substr(mid, 1)
+  else answer = s.substring(mid - 1, mid + 1);
+  //s.substr(mid-1, 2)
+
+  return answer;
+}
+console.log(solution1("study"));
+console.log(solution1("good"));
