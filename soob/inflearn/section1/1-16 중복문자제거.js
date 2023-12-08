@@ -2,7 +2,7 @@
 // 제거된 문자열의 각 문자는 원래 문자열의 순서를 유지합니다.
 
 function solution(s) {
-  return [...new Set([...s])].join("");
+  return [...new Set(s)].join("");
 }
 console.log(solution("ksekkset"));
 
