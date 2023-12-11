@@ -22,3 +22,13 @@ function solution(s) {
 
 let str = "found7, time: study; Yduts; emit, 7Dnuof";
 console.log(solution(str));
+
+function solution1(s) {
+  let answer = "YES";
+  s = s.toLowerCase().replace(/[^a-z]/g, "");
+  if (s.split("").reverse().join("") !== s) return "NO";
+  return answer;
+}
+
+let str1 = "found7, time: study; Yduts; emit, 7Dnuof";
+console.log(solution1(str1));
