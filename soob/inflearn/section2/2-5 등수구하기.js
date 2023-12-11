@@ -10,17 +10,15 @@ function solution(arr) {
   arr.sort((a, b) => b - a);
   return newArr.reduce((acc, el) => {
     const a = acc;
-    let b;
-    arr.filter((e, index) => {
-      if (e === el) {
-        b = index;
-        return true;
-      }
-    });
-    a.push(b + 1);
+    a.push(arr.indexOf(el) + 1);
     return a;
   }, []);
 }
 
 let arr = [87, 89, 92, 100, 76];
+let arr1 = [92, 92, 92, 100, 76];
 console.log(solution(arr));
+
+// 강의
+function solution1(arr) {}
+console.log(solution1(arr));
