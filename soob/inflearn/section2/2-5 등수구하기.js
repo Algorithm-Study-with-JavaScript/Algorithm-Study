@@ -20,5 +20,16 @@ let arr1 = [92, 92, 92, 100, 76];
 console.log(solution(arr));
 
 // 강의
-function solution1(arr) {}
-console.log(solution1(arr));
+function solution1(arr) {
+  let n = arr.length;
+  let answer = Array.from({ length: n }, () => 1);
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      if (arr[j] > arr[i]) answer[i]++;
+    }
+  }
+  return answer;
+}
+
+let arr2 = [87, 89, 92, 100, 76];
+console.log(solution1(arr2));
