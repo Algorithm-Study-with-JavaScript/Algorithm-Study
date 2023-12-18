@@ -1,14 +1,32 @@
-var x = 1
-
-function foo() {
-	var x = 50
-	bar()
+function a() {
+  console.log("a");
+  Promise.resolve().then(inA);
 }
 
-function bar() {
-	console.log(x)
+function b() {
+  console.log("b");
+  inB();
 }
 
-foo() // ? 1
+function c() {
+  console.log("c");
+  setTimeout(inC, 0);
+}
 
-bar() // ? 1
+function inA() {
+  console.log("inA");
+}
+
+function inB() {
+  console.log("inb");
+}
+
+function inC() {
+  console.log("inC");
+}
+
+a();
+
+setTimeout(b, 0);
+
+Promise.resolve().then(c);

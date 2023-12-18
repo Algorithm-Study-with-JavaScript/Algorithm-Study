@@ -5,6 +5,7 @@ function solution(m, product) {
   let answer = [];
   let count = 0;
   let salePrice = 0;
+  
   for (let i = 0; i < product.length; i++) {
     const [a, b] = product[i];
     salePrice = a / 2 + b;
