@@ -1,6 +1,4 @@
 function solution(n, k, card) {
-  card.sort((a, b) => b - a);
-  console.log(card);
   let temp = new Set();
 
   for (let i = 0; i < card.length; i++) {
