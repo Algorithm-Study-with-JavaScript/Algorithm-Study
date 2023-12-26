@@ -13,5 +13,9 @@ function solution(m, arr) {
   }
 }
 
+function solution2(m, arr) {
+  let lt = (rt = 0);
+  
+}
 let a = [1, 2, 1, 3, 1, 1, 1, 2];
-console.log(solution(6, a));
+console.log(solution2(6, a));
