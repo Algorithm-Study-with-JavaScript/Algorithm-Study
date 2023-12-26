@@ -3,10 +3,8 @@ function solution(m, arr) {
   for (let i = 0; i < arr.length; i++) {
     let flag = 0;
     let sum = arr[i];
-    let a = [arr[i]];
     for (let j = i + 1; j < arr.length; j++) {
       sum = sum + arr[j];
-      a.push(arr[j]);
       if (sum === m || sum > m) {
         flag = 1;
         break;
