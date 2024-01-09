@@ -27,7 +27,9 @@ function solution1(s) {
   let answer;
   let stack = [];
   for (let x of s) {
+    // 닫는 괄호일 경우 짝인 여는 괄호까지 스택에서 뺌
     if (x === ")") {
+      // 여는 괄호 만날 때까지 스택에서 제거
       while (stack.pop() !== "(");
     } else stack.push(x);
   }
