@@ -1,7 +1,6 @@
 function solution(s) {
   const reg = /\+|\-|\/|\*/;
   const stack = [];
-  let answer;
 
   for (let x of s) {
     if (!x.match(reg)) {
