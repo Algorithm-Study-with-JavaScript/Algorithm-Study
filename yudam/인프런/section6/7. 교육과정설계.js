@@ -1,7 +1,9 @@
 function solution(need, plan) {
   const needQueue = need.split("");
   const stack = [];
-
+  let a = "CBA";
+  let b = "CBDGEA";
+  // let b = "CGEADB";
   for (let x of plan) {
     if (x === needQueue[0]) {
       stack.push(x);
