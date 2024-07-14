@@ -41,10 +41,27 @@ function filterRecordsInRange(records, k, date) {
   });
 }
 
-// 주어진 레코드를 k일 이전부터 주어진 날짜까지 필터링하는 함수
+// 필터링된 레코드에서 pid와 uid를 매핑하는 함수
+function mapPidToUid(filteredRecords) {
+  const pidToUidMap = new Map();
+
+  filteredRecords.forEach((record) => {
+    const [date, uid, pid] = record.split(" ");
+    if (!pidToUidMap.has(pid)) {
+      pidToUidMap.set(pid, []);
+    }
+    pidToUidMap.get(pid).push(uid);
+  });
+
+  return pidToUidMap;
+}
+
+// 주어진 레코드를 k일 이전부터 주어진 날짜까지 필터링하고 재구매율을 계산하는 함수
 function solution(records, k, date) {
   const filteredRecords = filterRecordsInRange(records, k, date);
-  console.log(filteredRecords);
+
+  const mapPidToMap = mapPidToUid(filteredRecords);
+  console.log(mapPidToMap);
 }
 
 // 테스트 데이터
