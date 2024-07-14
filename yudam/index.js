@@ -4,9 +4,17 @@ function parseDate(dateStr) {
   return { year, month, day };
 }
 
+// 날짜 객체를 "YYYY-MM-DD" 형식의 문자열로 변환하는 함수
+function formatDate({ year, month, day }) {
+  return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(
+    2,
+    "0"
+  )}`;
+}
+
 // 날짜에서 k일을 빼는 함수
-function subtractDays(dateObj, k) {
-  let { year, month, day } = dateObj;
+function subtractDays(date, k) {
+  let { year, month, day } = parseDate(date);
 
   day -= k;
 
@@ -19,23 +27,12 @@ function subtractDays(dateObj, k) {
     }
   }
 
-  return { year, month, day };
-}
-
-// 날짜 객체를 "YYYY-MM-DD" 형식의 문자열로 변환하는 함수
-function formatDate({ year, month, day }) {
-  return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(
-    2,
-    "0"
-  )}`;
+  return formatDate({ year, month, day });
 }
 
 // 주어진 날짜 범위 내의 레코드를 필터링하는 함수
 function filterRecordsInRange(records, k, date) {
-  const dateObj = parseDate(date);
-  const startDateObj = subtractDays(date);
-
-  const startDateStr = formatDate(startDateObj);
+  const startDateStr = subtractDays(date, k);
   const endDateStr = date;
 
   return records.filter((record) => {
