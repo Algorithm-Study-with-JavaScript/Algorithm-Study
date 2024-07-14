@@ -1,25 +1,10 @@
-// 날짜 문자열을 { year, month, day } 객체로 변환하는 함수
-function parseDate(dateStr) {
-  const [year, month, day] = dateStr.split("-").map(Number);
-  return { year, month, day };
-}
+function subtractDays(dateStr, k) {
+  let [year, month, day] = dateStr.split("-").map(Number);
 
-// 날짜 객체를 "YYYY-MM-DD" 형식의 문자열로 변환하는 함수
-function formatDate({ year, month, day }) {
-  return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(
-    2,
-    "0"
-  )}`;
-}
-
-// 날짜에서 k일을 빼는 함수
-function subtractDays(date, k) {
-  let { year, month, day } = parseDate(date);
-
-  day -= k;
+  day -= k - 1;
 
   while (day <= 0) {
-    day += 31;
+    day += 30;
     month -= 1;
     if (month <= 0) {
       month += 12;
@@ -27,7 +12,10 @@ function subtractDays(date, k) {
     }
   }
 
-  return formatDate({ year, month, day });
+  return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(
+    2,
+    "0"
+  )}`;
 }
 
 // 주어진 날짜 범위 내의 레코드를 필터링하는 함수
@@ -56,29 +44,60 @@ function mapPidToUid(filteredRecords) {
   return pidToUidMap;
 }
 
-// 주어진 레코드를 k일 이전부터 주어진 날짜까지 필터링하고 재구매율을 계산하는 함수
+// 각 pid의 재구매율을 계산하는 함수
+function calculateRepurchaseRates(pidToUidMap) {
+  const pidToRepurchaseRate = new Map();
+
+  pidToUidMap.forEach((uids, pid) => {
+    const uniqueUids = new Set(uids);
+    const totalPurchases = uids.length;
+    const repurchaseCount = totalPurchases - uniqueUids.size;
+    const repurchaseRate = repurchaseCount / uniqueUids.size;
+    pidToRepurchaseRate.set(pid, {
+      repurchaseRate,
+      totalPurchases,
+    });
+  });
+
+  return pidToRepurchaseRate;
+}
+
+// 재구매율을 기준으로 정렬하는 함수
+function sortRepurchaseRates(pidToRepurchaseRate) {
+  const sortedEntries = Array.from(pidToRepurchaseRate.entries()).sort(
+    ([pidA, dataA], [pidB, dataB]) => {
+      if (dataB.repurchaseRate !== dataA.repurchaseRate) {
+        return dataB.repurchaseRate - dataA.repurchaseRate; // 재구매율 기준 내림차순
+      }
+      if (dataB.totalPurchases !== dataA.totalPurchases) {
+        return dataB.totalPurchases - dataA.totalPurchases; // 총 구매 횟수 기준 내림차순
+      }
+      // 상품 아이디 기준 오름차순 (숫자 기준)
+      const pidANum = parseInt(pidA.replace("pid", ""), 10);
+      const pidBNum = parseInt(pidB.replace("pid", ""), 10);
+      return pidANum - pidBNum;
+    }
+  );
+
+  return sortedEntries.map(([pid]) => pid);
+}
+// 주어진 레코드를 k일 이전부터 주어진 날짜까지 필터링하고 재구매율을 계산 및 정렬하는 함수
 function solution(records, k, date) {
   const filteredRecords = filterRecordsInRange(records, k, date);
 
-  const mapPidToMap = mapPidToUid(filteredRecords);
-  console.log(mapPidToMap);
+  if (filteredRecords.length === 0) {
+    return ["no result"];
+  }
+  const pidToUidMap = mapPidToUid(filteredRecords);
+
+  const pidToRepurchaseRate = calculateRepurchaseRates(pidToUidMap);
+  // console.log(pidToUidMap);
+  // console.log(pidToRepurchaseRate);
+  const sortedRepurchaseRates = sortRepurchaseRates(pidToRepurchaseRate);
+
+  if (sortedRepurchaseRates.length === 0) {
+    return ["no result"];
+  }
+  // console.log(sortedRepurchaseRates);
+  return sortedRepurchaseRates;
 }
-
-// 테스트 데이터
-const records = [
-  "2020-01-01 uid1 pid1",
-  "2020-02-26 uid1 pid1",
-  "2020-02-26 uid2 pid1",
-  "2020-02-27 uid3 pid2",
-  "2020-02-28 uid4 pid2",
-  "2020-03-01 uid1 pid1",
-  "2020-03-03 uid2 pid2",
-  "2020-03-04 uid2 pid2",
-  "2020-03-05 uid3 pid3",
-  "2020-03-05 uid3 pid3",
-  "2020-03-05 uid1 pid4",
-];
-const k = 10;
-const date = "2020-03-05";
-
-solution(records, k, date);
