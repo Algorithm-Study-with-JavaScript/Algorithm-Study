@@ -1,3 +1,4 @@
+// 주어진 날짜에서 k일 빼는 함수
 function subtractDays(dateStr, k) {
   let [year, month, day] = dateStr.split("-").map(Number);
 
@@ -23,10 +24,12 @@ function filterRecordsInRange(records, k, date) {
   const startDateStr = subtractDays(date, k);
   const endDateStr = date;
 
-  return records.filter((record) => {
+  const filteredRecords = records.filter((record) => {
     const recordDate = record.split(" ")[0];
     return recordDate >= startDateStr && recordDate <= endDateStr;
   });
+
+  return filteredRecords;
 }
 
 // 필터링된 레코드에서 pid와 uid를 매핑하는 함수
@@ -50,12 +53,12 @@ function calculateRepurchaseRates(pidToUidMap) {
 
   pidToUidMap.forEach((uids, pid) => {
     const uniqueUids = new Set(uids);
-    const totalPurchases = uids.length;
-    const repurchaseCount = totalPurchases - uniqueUids.size;
-    const repurchaseRate = repurchaseCount / uniqueUids.size;
+    const repurchaseCount = uids.length - uniqueUids.size;
+    const repurchaseRate =
+      uniqueUids.size > 0 ? (repurchaseCount / uniqueUids.size) * 100 : 0;
     pidToRepurchaseRate.set(pid, {
       repurchaseRate,
-      totalPurchases,
+      totalPurchases: uids.length,
     });
   });
 
@@ -81,6 +84,7 @@ function sortRepurchaseRates(pidToRepurchaseRate) {
 
   return sortedEntries.map(([pid]) => pid);
 }
+
 // 주어진 레코드를 k일 이전부터 주어진 날짜까지 필터링하고 재구매율을 계산 및 정렬하는 함수
 function solution(records, k, date) {
   const filteredRecords = filterRecordsInRange(records, k, date);
@@ -91,13 +95,11 @@ function solution(records, k, date) {
   const pidToUidMap = mapPidToUid(filteredRecords);
 
   const pidToRepurchaseRate = calculateRepurchaseRates(pidToUidMap);
-  // console.log(pidToUidMap);
-  // console.log(pidToRepurchaseRate);
   const sortedRepurchaseRates = sortRepurchaseRates(pidToRepurchaseRate);
 
   if (sortedRepurchaseRates.length === 0) {
     return ["no result"];
   }
-  // console.log(sortedRepurchaseRates);
+
   return sortedRepurchaseRates;
 }
