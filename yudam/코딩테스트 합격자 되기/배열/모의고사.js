@@ -26,19 +26,12 @@ function solution(answers) {
   let way2 = [2, 1, 2, 3, 2, 4, 2, 5];
   let way3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
 
-  // console.log(match(answers, way1));
-  // console.log(match(answers, way2));
-  // console.log(match(answers, way3));
-
   const object = {
     1: match(answers, way1),
     2: match(answers, way2),
     3: match(answers, way3),
   };
 
-  // console.log(Object.entries(object));
-
-  // console.log(Object.entries(object).sort((a, b) => b[1] - a[1]));
   const max = Math.max(...Object.values(object));
 
   // Object.keys(object).find((key) => object[key] === max);
@@ -47,4 +40,24 @@ function solution(answers) {
     .map((key) => +key);
 }
 
-// console.log(solution([1, 3, 2, 4, 2]));
+function solution2(answers) {
+  const patterns = [
+    [1, 2, 3, 4, 5],
+    [2, 1, 2, 3, 2, 4, 2, 5],
+    [3, 3, 1, 1, 2, 2, 4, 4, 5, 5],
+  ];
+  const score = [0, 0, 0];
+
+  console.log(answers.entries());
+
+  // ➌ 각 수포자의 패턴과 정답이 얼마나 일치하는지 확인
+  for (const [i, answer] of answers.entries()) {
+    for (const [j, pattern] of patterns.entries()) {
+      if (answer === pattern[i % pattern.length]) {
+        scores[j] += 1;
+      }
+    }
+  }
+}
+
+solution2([1, 2, 3, 4, 5]);
