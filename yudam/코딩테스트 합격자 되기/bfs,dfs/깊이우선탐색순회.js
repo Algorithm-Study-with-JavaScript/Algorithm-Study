@@ -1,30 +1,30 @@
-// function solution(graph, start) {
-//   const adjList = {};
-//   graph.forEach((element) => {
-//     const [start, end] = element;
-//     if (!adjList[start]) {
-//       adjList[start] = [];
-//     }
-//     adjList[start].push(end);
-//   });
+function solution(graph, start) {
+  const adjList = {};
+  graph.forEach((element) => {
+    const [start, end] = element;
+    if (!adjList[start]) {
+      adjList[start] = [];
+    }
+    adjList[start].push(end);
+  });
 
-//   const visited = new Set();
-//   const result = [];
+  const visited = new Set();
+  const result = [];
 
-//   function dfs(visited, node, result) {
-//     if (!visited.has(node)) {
-//       visited.add(node);
-//       result.push(node);
-//       (adjList[node] || []).forEach((node) => {
-//         dfs(visited, node, result);
-//       });
-//     }
-//   }
+  function dfs(visited, node, result) {
+    if (!visited.has(node)) {
+      visited.add(node);
+      result.push(node);
+      (adjList[node] || []).forEach((node) => {
+        dfs(visited, node, result);
+      });
+    }
+  }
 
-//   dfs(visited, start, result);
+  dfs(visited, start, result);
 
-//   return result;
-// }
+  return result;
+}
 
 function solution(graph, start) {
   // 그래프를 객체로 변환 (그래프는 인접 리스트 형태로 저장됨)
