@@ -4,82 +4,82 @@
 그런데, 그 때 max 값은 제외해야함
 */
 function solution(n, connections) {
+  // 인접 리스트 생성
   const adjList = {};
-  connections.forEach((connection) => {
-    const [v1, v2] = connection;
-    if (!adjList[v1]) {
-      adjList[v1] = [];
-    }
-    if (!adjList[v2]) {
-      adjList[v2] = [];
-    }
-
+  connections.forEach(([v1, v2]) => {
+    if (!adjList[v1]) adjList[v1] = [];
+    if (!adjList[v2]) adjList[v2] = [];
     adjList[v1].push(v2);
     adjList[v2].push(v1);
   });
 
-  let maxLength = -Infinity;
-  let maxNode = null;
-
-  for (const [node, adjNodes] of Object.entries(adjList)) {
-    const adjNodesLength = adjNodes.length;
-    if (adjNodesLength > maxLength) {
-      maxLength = adjNodesLength;
-      maxNode = node;
-    }
-  }
-
-  const visited = new Set();
-
-  function dfs(visited, node, result) {
-    if (visited.has(node) || node === Number(maxNode)) {
-      return;
-    }
-
-    result.push(node);
+  function dfs(node, visited) {
     visited.add(node);
-    adjList[node].forEach((otherNode) => dfs(visited, otherNode, result));
+    let count = 1; // 현재 노드 카운트
+
+    for (const neighbor of adjList[node]) {
+      if (!visited.has(neighbor)) {
+        count += dfs(neighbor, visited);
+      }
+    }
+
+    return count;
   }
 
-  let secondMaxNode = null;
-  let secondMaxLength = -Infinity;
+  let minDifference = Infinity;
 
-  adjList[maxNode].forEach((neighbor) => {
-    const result = [];
-    dfs(visited, neighbor, result);
-    console.log("neighbor", neighbor, "result", result);
+  // 각 연결을 끊어보며 네트워크 차이 계산
+  for (const [v1, v2] of connections) {
+    // v1 - v2 연결을 제거하고 탐색
+    adjList[v1] = adjList[v1].filter((node) => node !== v2);
+    adjList[v2] = adjList[v2].filter((node) => node !== v1);
 
-    if (secondMaxNode < result.length) {
-      secondMaxLength = result.length;
-      secondMaxNode = neighbor;
-    }
-  });
+    // 첫 번째 서브 네트워크 크기 계산
+    const visited = new Set();
+    const size1 = dfs(v1, visited);
 
-  return n - secondMaxLength - secondMaxLength;
+    // 두 번째 서브 네트워크는 전체 노드에서 첫 번째 네트워크 크기를 뺀 값
+    const size2 = n - size1;
+    const difference = Math.abs(size1 - size2);
+    minDifference = Math.min(minDifference, difference);
+
+    // 연결 복원
+    adjList[v1].push(v2);
+    adjList[v2].push(v1);
+  }
+
+  return minDifference;
 }
 
-solution(9, [
-  [1, 3],
-  [2, 3],
-  [3, 4],
-  [4, 5],
-  [4, 6],
-  [4, 7],
-  [7, 8],
-  [7, 9],
-]);
+// 테스트 케이스
+console.log(
+  solution(9, [
+    [1, 3],
+    [2, 3],
+    [3, 4],
+    [4, 5],
+    [4, 6],
+    [4, 7],
+    [7, 8],
+    [7, 9],
+  ])
+); // Expected output: 3
 
-solution(4, [
-  [1, 2],
-  [2, 3],
-  [3, 4],
-]);
+console.log(
+  solution(4, [
+    [1, 2],
+    [2, 3],
+    [3, 4],
+  ])
+); // Expected output: 0
 
-solution(7, [
-  [1, 2],
-  [2, 7],
-  [3, 7],
-  [3, 4],
-  [4, 5],
-  [6, 7],
-]);
+console.log(
+  solution(7, [
+    [1, 2],
+    [2, 7],
+    [3, 7],
+    [3, 4],
+    [4, 5],
+    [6, 7],
+  ])
+); // Expected output: 1
