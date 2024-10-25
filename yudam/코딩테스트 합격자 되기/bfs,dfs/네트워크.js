@@ -1,7 +1,7 @@
 function solution(n, computers) {
   const adjList = {};
   // 방문한 컴퓨터를 기록하는 집합
-  const visitedComputers = new Set();
+  const visited = new Set();
 
   // 각 컴퓨터의 연결 상태를 인접 리스트로 구성
   computers.forEach((connections, currentComputer) => {
@@ -35,8 +35,8 @@ function solution(n, computers) {
 
   // 모든 컴퓨터를 순회하며 방문하지 않은 경우 새로운 네트워크로 간주
   for (let i = 0; i < n; i++) {
-    if (!visitedComputers.has(i)) {
-      dfs(visitedComputers, i); // 해당 네트워크 탐색
+    if (!visited.has(i)) {
+      dfs(visited, i); // 해당 네트워크 탐색
       networkCount += 1; // 네트워크 수 증가
     }
   }
